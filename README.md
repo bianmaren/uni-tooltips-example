@@ -1,8 +1,9 @@
-# uni-tooltips 工具提示组件DEMO
-兼容微信小程序，h5，uni-app
+# uni-tooltips 工具提示组件 DEMO
+兼容微信小程序，h5，uni-app。暂不支持nvue
+
 
 工具提示组件，为了解决工具提示的问题。
-组件名：uni-tooltips，代码块： uniTooltips。
+组件名：bianmaren-tooltips，代码块： bianmarenTooltips。
 
 # 案例
 
@@ -38,6 +39,7 @@ export default {
 |:---|:---:|---:|---:|
 |tooltipShow|Boolean|false|是否显示|
 |textColor|String|#ffffff|字体颜色|
+|fontSize|String|28rpx|字体大小|
 |backgroundColor|String|#000000|背景颜色|
 |splitColor|String|#ffffff|分隔符颜色|
 |btns|Array|['HelloWorld']|提示里面显示的按钮|
