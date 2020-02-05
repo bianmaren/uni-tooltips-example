@@ -8,22 +8,22 @@
 			<view id="demo4" class="demo" @click="showTips('demo4','right')">右边提示</view>
 		</view>
 
-		<uniTooltips
+		<bianmarenTooltips
 			:gravity="gravity"
 			:tooltipShow="tooltipShow"
 			:btns="tooltipBtns"
 			:eleId="eleId"
-			@btnClick="sortTooltipClick"></uniTooltips>
+			@btnClick="sortTooltipClick"></bianmarenTooltips>
 	</view>
 </template>
 
 <script>
 	
 	//组件倒入
-	import uniTooltips from '@/components/uni-tooltips/uni-tooltips.vue'
+	import bianmarenTooltips from '@/components/bianmaren-tooltips/bianmaren-tooltips.vue'
 	
 	export default {
-		components: {uniTooltips},
+		components: {bianmarenTooltips},
 		data() {
 			return {
 				//方向
