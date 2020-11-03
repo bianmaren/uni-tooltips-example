@@ -28,11 +28,11 @@
                 type: String,
                 default: "#ffffff"
             },
-			//字体大小
-			fontSize:{
-			    type: String,
-			    default: "28rpx"
-			},
+          //字体大小
+          fontSize: {
+            type: String,
+            default: "28rpx"
+          },
             //背景颜色
             backgroundColor:{
                 type: String,
