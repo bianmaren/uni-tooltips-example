@@ -75,12 +75,12 @@
                 this.setPosition();
             },
             tooltipShow(){
-
                 this.setPosition();
             }
         },
         mounted() {
             this.setPosition();
+
         },
         computed:{
             justClass(){
@@ -97,13 +97,10 @@
                     return;
                 }
 
-                console.info(_this.parentThis)
-                console.info(_this.eleId)
-
-                const query = uni.createSelectorQuery().in(_this.$parent);
+                const query = uni.createSelectorQuery();
                 query.select('#'+_this.eleId).boundingClientRect(data => {
 
-					console.info(data);
+					          console.info(data);
                     var pos = { x: data.left, y: data.top };
                     var wh = { w: data.width, h: data.height };
 
@@ -131,21 +128,21 @@
                         if("top" === _this.gravity){
                             if(rightTmp > windowWidth ){
                                 _this.left = pos.x + wh.w - outerWidth;
-                                _this.top =  pos.y - outerHeight - _this.distance;
+                                _this.top =  wh.h + pos.y - outerHeight - _this.distance;
                                 _this.justStyleObject = {
                                     'left':(outerWidth - wh.w/2) + "px",
                                     'borderColor':_this.backgroundColor+" transparent transparent transparent"
                                 };
                             }else if( leftTmp < 0 ){
                                 _this.left = pos.x;
-                                _this.top = pos.y - outerHeight - _this.distance;
+                                _this.top = wh.h + pos.y - outerHeight - _this.distance;
                                 _this.justStyleObject = {
                                     'left':wh.w/2 + "px",
                                     'borderColor':_this.backgroundColor+" transparent transparent transparent"
                                 };
                             }else{
                                 _this.left = pos.x - (outerWidth - wh.w)/2;
-                                _this.top = pos.y - outerHeight - _this.distance
+                                _this.top = wh.h + pos.y - outerHeight - _this.distance
                                 _this.justStyleObject = {
                                     'left':"50%",
                                     'borderColor':_this.backgroundColor+" transparent transparent transparent"
@@ -156,21 +153,21 @@
                         if('bottom' === _this.gravity){
                             if(rightTmp > windowWidth ){
                                 _this.left = pos.x + wh.w - outerWidth;
-                                _this.top =  pos.y + wh.h + _this.distance;
+                                _this.top =  wh.h + pos.y + wh.h + _this.distance;
                                 _this.justStyleObject = {
                                     'left':(outerWidth - wh.w/2)+'px',
                                     'borderColor':"transparent transparent "+_this.backgroundColor+" transparent"
                                 };
                             }else if( leftTmp < 0 ){
                                 _this.left = pos.x;
-                                _this.top =  pos.y + wh.h + _this.distance;
+                                _this.top =  wh.h + pos.y + wh.h + _this.distance;
                                 _this.justStyleObject = {
                                     left:wh.w/2 + 'px',
                                     'borderColor':"transparent transparent "+_this.backgroundColor+" transparent"
                                 }
                             }else{
                                 _this.left = pos.x - (outerWidth - wh.w)/2;
-                                _this.top =  pos.y + wh.h + _this.distance;
+                                _this.top =  wh.h + pos.y + wh.h + _this.distance;
                                 _this.justStyleObject = {
                                     left:'50%',
                                     'borderColor':"transparent transparent "+_this.backgroundColor+" transparent"
@@ -181,8 +178,8 @@
 
                         if('left' === _this.gravity){
                             _this.left = pos.x - outerWidth - _this.distance;
-                            _this.top = pos.y - (outerHeight - wh.h)/2;
-							console.log("top:"+ _this.top)
+                            _this.top = wh.h + pos.y - (outerHeight - wh.h)/2;
+							              console.log("top:"+ _this.top)
                             _this.justStyleObject = {
                                 top:'50%',
                                 'borderColor':"transparent transparent transparent " +  _this.backgroundColor
@@ -191,7 +188,7 @@
 
                         if('right' === _this.gravity){
                             _this.left = pos.x + wh.w + _this.distance;
-                            _this.top = pos.y - (outerHeight - wh.h)/2;
+                            _this.top = wh.h + pos.y - (outerHeight - wh.h)/2;
                             _this.justStyleObject = {
                                 top:'50%',
                                 'borderColor':"transparent "+_this.backgroundColor+" transparent  transparent"
@@ -214,18 +211,18 @@
 <style scoped>
 
     .just-tooltip{
-		position:absolute;
-		left:0;top:0;
-		border-radius:5px;
-		background:#000;
-		z-index:9999;
-	}
+      position:fixed;
+      left:0;top:0;
+      border-radius:5px;
+      background:#000;
+      z-index:9999;
+    }
     .just-tooltip .just-con{
-		padding:8px 10px;
-		display: flex;
-		flex-direction: row;
-		white-space: nowrap;
-	}
+      padding:8px 10px;
+      display: flex;
+      flex-direction: row;
+      white-space: nowrap;
+    }
 
     .just-tooltip .just-top,
     .just-tooltip .just-bottom,

@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-    <block v-for="n in 10" :key="n">
+    <block v-for="n in 100" :key="n">
       <view class="demo-row" :id="'item-'+n" @click="showTips('item-'+n,'bottom')" >
         第{{n}}行数据,点击我
       </view>
@@ -11,7 +11,7 @@
       :btns="tooltipBtns"
       :eleId="eleId"
       @btnClick="sortTooltipClick"></bianmarenTooltips>
-    </view>
+  </view>
 </template>
 
 <script>
@@ -36,6 +36,9 @@
 		onLoad() {
 			
 		},
+    onPageScroll(e){
+		  this.tooltipShow = false;
+    },
 		methods: {
 			showTips(id,gravity){
 				this.tooltipShow = true;
@@ -53,13 +56,11 @@
 </script>
 
 <style>
-	
-	.demo-row{
 
+	.demo-row{
     line-height: 80rpx;
     background: #fafafa;
     margin-top: 20rpx;
     text-align: center;
-	
 	}
 </style>
